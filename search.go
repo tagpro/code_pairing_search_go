@@ -25,18 +25,21 @@ type User struct {
 var tickets []Ticket
 var users []User
 
-func loadTickets() {
+func loadTickets() error {
 	ticketsJson, _ := ioutil.ReadFile("./data/tickets.json")
 	usersJson, _ := ioutil.ReadFile("./data/users.json")
 
-	_ = json.Unmarshal(ticketsJson, &tickets)
-	_ = json.Unmarshal(usersJson, &users)
-}
-
-func init() {
-	loadTickets()
+	err := json.Unmarshal(ticketsJson, &tickets)
+	if err != nil {
+		return err
+	}
+	return json.Unmarshal(usersJson, &users)
 }
 
 func search() string {
-	return "Hello World"
+	err := loadTickets()
+	if err != nil {
+		panic(err)
+	}
+	return "Hello, World"
 }
