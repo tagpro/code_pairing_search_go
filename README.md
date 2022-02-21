@@ -7,7 +7,9 @@ that is needed (eg: searching for "Tim" would not return "Timothy").
 ### Running the tests
 ```bash
 make test
+
 or
+
 go test -v ./...
 ```
   
