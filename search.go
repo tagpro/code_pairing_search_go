@@ -25,7 +25,7 @@ type User struct {
 var tickets []Ticket
 var users []User
 
-func loadTickets() error {
+func loadData() error {
 	ticketsJson, _ := ioutil.ReadFile("./data/tickets.json")
 	usersJson, _ := ioutil.ReadFile("./data/users.json")
 
@@ -37,7 +37,7 @@ func loadTickets() error {
 }
 
 func search() string {
-	err := loadTickets()
+	err := loadData()
 	if err != nil {
 		panic(err)
 	}
